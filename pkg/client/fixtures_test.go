@@ -111,6 +111,10 @@ func (p *MockProjectConfigManager) GetOptimizelyConfig() *config.OptimizelyConfi
 	return optimizelyConfig
 }
 
+func (p *MockProjectConfigManager) IsNil() bool {
+	return p == nil
+}
+
 type MockDecisionService struct {
 	decision.Service
 	notificationCenter notification.Center
@@ -155,6 +159,10 @@ type PanickingConfigManager struct {
 
 func (m *PanickingConfigManager) GetConfig() (config.ProjectConfig, error) {
 	panic("I'm panicking")
+}
+
+func (m *PanickingConfigManager) IsNil() bool {
+	return m == nil
 }
 
 type PanickingDecisionService struct {

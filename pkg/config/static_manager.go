@@ -66,6 +66,10 @@ func NewStaticProjectConfigManager(config ProjectConfig, logger logging.Optimize
 	}
 }
 
+func (p *StaticProjectConfigManager) IsNil() bool {
+	return p == nil
+}
+
 /********************* Old Constructors not used in go-sdk, kept for backward compatibility **********/
 
 // NewStaticProjectConfigManagerFromURL returns new instance of StaticProjectConfigManager for URL

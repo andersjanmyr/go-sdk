@@ -21,7 +21,6 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"reflect"
 	"runtime/debug"
 	"strconv"
 
@@ -1023,7 +1022,7 @@ func (o *OptimizelyClient) getTypedValue(value string, variableType entities.Var
 
 func (o *OptimizelyClient) getProjectConfig() (projectConfig config.ProjectConfig, err error) {
 
-	if isNil(o.ConfigManager) {
+	if o.ConfigManager.IsNil() {
 		return nil, errors.New("project config manager is not initialized")
 	}
 	projectConfig, err = o.ConfigManager.GetConfig()
@@ -1076,8 +1075,4 @@ func (o *OptimizelyClient) getDecisionVariableMap(feature entities.Feature, vari
 	}
 
 	return valuesMap, reasons
-}
-
-func isNil(v interface{}) bool {
-	return v == nil || (reflect.ValueOf(v).Kind() == reflect.Ptr && reflect.ValueOf(v).IsNil())
 }

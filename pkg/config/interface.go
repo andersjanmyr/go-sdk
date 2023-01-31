@@ -61,4 +61,5 @@ type ProjectConfigManager interface {
 	GetOptimizelyConfig() *OptimizelyConfig
 	RemoveOnProjectConfigUpdate(id int) error
 	OnProjectConfigUpdate(callback func(notification.ProjectConfigUpdateNotification)) (int, error)
+	IsNil() bool
 }

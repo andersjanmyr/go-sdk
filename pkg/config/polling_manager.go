@@ -205,6 +205,10 @@ func (cm *PollingProjectConfigManager) setAuthHeaderIfDatafileAccessTokenPresent
 	}
 }
 
+func (p *PollingProjectConfigManager) IsNil() bool {
+	return p == nil
+}
+
 func newConfigManager(sdkKey string, logger logging.OptimizelyLogProducer, configOptions ...OptionFunc) *PollingProjectConfigManager {
 	pollingProjectConfigManager := PollingProjectConfigManager{
 		notificationCenter: registry.GetNotificationCenter(sdkKey),
